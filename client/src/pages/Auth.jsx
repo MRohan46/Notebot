@@ -291,13 +291,6 @@ const Auth = () => {
               </button>
             </form>
 
-            {/* Divider */}
-            <div className="flex items-center gap-4 my-6">
-              <div className="flex-1 h-px" style={{ background: '#8C8CA8' }} />
-              <span className="text-sm" style={{ color: '#8C8CA8' }}>OR</span>
-              <div className="flex-1 h-px" style={{ background: '#8C8CA8' }} />
-            </div>
-
             {/* Terms */}
             {!isLogin && (
               <p className="text-xs text-center mt-6 leading-relaxed" style={{ color: '#8C8CA8' }}>
