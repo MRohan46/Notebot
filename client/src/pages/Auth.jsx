@@ -298,31 +298,6 @@ const Auth = () => {
               <div className="flex-1 h-px" style={{ background: '#8C8CA8' }} />
             </div>
 
-            {/* Social Login */}
-            <div className="space-y-3">
-              <button
-                className="w-full py-3 rounded-lg font-semibold transition-all duration-300 hover:scale-105 flex items-center justify-center gap-3"
-                style={{
-                  background: 'transparent',
-                  border: '2px solid #8C8CA8',
-                  color: '#F5F5F5'
-                }}>
-                <Chrome size={20} />
-                Continue with Google
-              </button>
-
-              <button
-                className="w-full py-3 rounded-lg font-semibold transition-all duration-300 hover:scale-105 flex items-center justify-center gap-3"
-                style={{
-                  background: 'transparent',
-                  border: '2px solid #8C8CA8',
-                  color: '#F5F5F5'
-                }}>
-                <Github size={20} />
-                Continue with GitHub
-              </button>
-            </div>
-
             {/* Terms */}
             {!isLogin && (
               <p className="text-xs text-center mt-6 leading-relaxed" style={{ color: '#8C8CA8' }}>
