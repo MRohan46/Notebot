@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { Sparkles, Send, Users, Search, Smile, Paperclip, Phone, Video, Info, LogOut, User, Copy, Check } from 'lucide-react';
 import io from 'socket.io-client';
 
-const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:5000';
+const BACKEND_URL = 'https://notebot-d51g.onrender.com';
 
 const ChatPage = () => {
   const { id } = useParams();

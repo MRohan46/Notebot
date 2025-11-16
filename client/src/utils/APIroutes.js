@@ -1,10 +1,10 @@
-const host = "http://localhost:5000/";
+const host = "https://notebot-d51g.onrender.com";
 
-export const analyzeAPI       = `http://localhost:5000/api/analyze`;
-export const analyzeSaveAPI   = `http://localhost:5000/api/analyze/save`;
-export const getSessionsAPI   = `http://localhost:5000/api/analyze/get-sessions`;
-export const getSessionAPI    = `http://localhost:5000/api/analyze/get-session`;
-export const deleteSessionAPI = `http://localhost:5000/api/analyze/delete-session`;
-export const LoginAPI         = `http://localhost:5000/api/auth/login`;
-export const signupAPI        = `http://localhost:5000/api/auth/signup`;
-export const getUserDataAPI   = `http://localhost:5000/api/auth/user`;
+export const analyzeAPI       = `${host}/api/analyze`;
+export const analyzeSaveAPI   = `${host}/api/analyze/save`;
+export const getSessionsAPI   = `${host}/api/analyze/get-sessions`;
+export const getSessionAPI    = `${host}/api/analyze/get-session`;
+export const deleteSessionAPI = `${host}/api/analyze/delete-session`;
+export const LoginAPI         = `${host}/api/auth/login`;
+export const signupAPI        = `${host}/api/auth/signup`;
+export const getUserDataAPI   = `${host}/api/auth/user`;
