@@ -15,7 +15,7 @@ import { UploadOutlined } from '@ant-design/icons';
 
 // Set workerSrc to the local build
 pdfjsLib.GlobalWorkerOptions.workerSrc = 
-  `/node_modules/pdfjs-dist/legacy/build/pdf.worker.min.js`;
+  `/pdf.worker.min.mjs`;
 
 const AppHome = () => {
   const [page, setPage] = useState('dashboard');
