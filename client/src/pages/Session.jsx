@@ -12,57 +12,69 @@ const Session = () => {
   const [revealedAnswers, setRevealedAnswers] = useState({});
   const [summaryData, setSummaryData] = useState(null);
   const [quizData, setQuizData] = useState(null);
-  const [serverStatus, setServerStatus] = useState(0)
-  const { id: sessionId } = useParams();
+  const [serverStatus, setServerStatus] = useState(0);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);  const { id: sessionId } = useParams();
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchSession = async () => {
-        try {
+      try {
         const response = await axios.post(
-            getSessionAPI,
-            { sessionId },                // POST body
-            { withCredentials: true }     // config
+          getSessionAPI,
+          { sessionId },
+          { withCredentials: true }
         );
 
-        const session = response.data?.session;
         setServerStatus(response.status);
-        if (!session) return console.warn("Session is null!");
+
+        const session = response.data?.session;
+        if (!session) {
+          setError(true);
+          setLoading(false);
+          return;
+        }
 
         // Transform summary
         const summary = session.output?.summary;
         const transformedSummary = {
-            title: session.title || "remove",
-            date: session.date?.split("T")[0] || "remove",
-            content: {
+          title: session.title || "remove",
+          date: session.date?.split("T")[0] || "remove",
+          content: {
             mainSummary: summary?.summary || ["remove"],
             keyTerms: (summary?.keywords || []).map((kw) => ({
-                term: kw,
-                definition: "remove",
+              term: kw,
+              definition: "remove",
             })),
-            },
+          },
         };
 
         // Transform quiz
         const quiz = session.output?.quiz || [];
         const transformedQuiz = {
-            title: session.title || "remove",
-            date: session.date?.split("T")[0] || "remove",
-            questionCount: quiz.length || 0,
-            difficulty: "remove",
-            questions: quiz.map((q, i) => ({
+          title: session.title || "remove",
+          date: session.date?.split("T")[0] || "remove",
+          questionCount: quiz.length,
+          difficulty: "remove",
+          questions: quiz.map((q, i) => ({
             id: i + 1,
             question: q.question || "remove",
             answer: q.answer || "remove",
             type: "remove",
-            })),
+          })),
         };
 
         setSummaryData(transformedSummary);
         setQuizData(transformedQuiz);
-        } catch (err) {
+
+        setLoading(false);
+        setError(false);
+
+      } catch (err) {
         console.error("Failed to fetch session:", err);
-        }
+        setError(true);
+        setLoading(false);
+      }
     };
 
     fetchSession();
@@ -92,17 +104,9 @@ const Session = () => {
     });
   };
 
-  useEffect(()=>{
-    // If server returned error
-    if (serverStatus > 0 && serverStatus !== 200) {
-    return <SessionLoader loading={false} error={true} />;
-    }
-  
-    // If data is still loading
-    if (!summaryData || !quizData) {
-    return <SessionLoader loading={true} error={false} />;
-    }
-  }, [serverStatus, summaryData, quizData])
+  if (loading) return <SessionLoader loading={true} error={false} />;
+  if (error) return <SessionLoader loading={false} error={true} />;
+
 
 
     // If we have data, render the session normally
