@@ -18,11 +18,11 @@ export const SummaryView = ({summaryData}) => (
                 background: '#0A0A1F',
                 border: '1px solid rgba(160,32,240,0.3)'
               }}> 
-                <a href={item.term}>
+                <a href={item}>
                   <h3 
                     className="font-bold mb-2 text-lg"
                     style={{ color: '#A020F0' }}>
-                    {item.term}
+                    {item}
                   </h3>
                 </a>
             </div>
