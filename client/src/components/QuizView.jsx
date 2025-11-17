@@ -7,7 +7,7 @@ export const QuizView = ({quizData, revealedAnswers, toggleAnswer}) => (
       <div className="rounded-xl p-6 flex items-center justify-between" style={{ background: '#181836' }}>
         <div>
           <p className="text-sm mb-2" style={{ color: '#8C8CA8' }}>
-            {quizData.questionCount} Questions • {quizData.difficulty} Difficulty
+            {quizData?.questionCount} Questions • {quizData?.difficulty} Difficulty
           </p>
           <h2 className="text-2xl font-bold" style={{ color: '#F5F5F5' }}>
             Practice Mode
@@ -17,7 +17,7 @@ export const QuizView = ({quizData, revealedAnswers, toggleAnswer}) => (
 
       {/* Questions */}
       <div className="space-y-4">
-        {quizData.questions.map((q, i) => (
+        {quizData?.questions.map((q, i) => (
           <div 
             key={q.id}
             className="rounded-xl p-6 transition-all duration-300"

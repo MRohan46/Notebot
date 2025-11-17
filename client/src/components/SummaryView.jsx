@@ -10,7 +10,7 @@ export const SummaryView = ({summaryData}) => (
         </h2>
         
         <div className="grid md:grid-cols-2 gap-4">
-          {summaryData.content.links.map((item, i) => (
+          {summaryData?.content?.links.map((item, i) => (
             <div 
               key={i}
               className="rounded-lg p-4 transition-all duration-300 hover:scale-105 cursor-pointer"
