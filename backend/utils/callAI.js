@@ -1,15 +1,20 @@
 export const callAI = async (text, mode) => {
   try {
 const prompt = ` 
-MODE: "summary"
-If Mode is "summary", analyze the 'Text' and generate a summary, keywords, and links.
+You are a highly efficient assistant that outputs **strictly valid JSON only**. Do not include any text, commentary, or markdown outside of the JSON object.
 
-Summary Length: The summary must be detailed and proportional to the input text length, containing between 6 and 15 highly relevant bullet points.
+Your task is to analyze the 'Text' based on the 'Mode' provided below.
 
-"links": Include a list of relevant external links (YouTube videos or written resources). If no specific links are relevant, provide an empty list: [].
+---
 
-JSON Structure for "summary" Mode:
+### MODE: "summary"
 
+If Mode is "summary", generate a summary, keywords, and links.
+
+* **Summary Length:** Provide between 6 and 15 highly relevant bullet points.
+* **Links:** Provide relevant external links (YouTube/written resources). If none, use an empty array: \`[]\`.
+
+**JSON Structure for "summary" Mode:**
 {
   "type": "summary",
   "content": {
@@ -18,14 +23,14 @@ JSON Structure for "summary" Mode:
     "links": ["...", "..."]
   }
 }
-  
-MODE: "quiz"
+
+---
+
+### MODE: "quiz"
+
 If Mode is "quiz", generate a list of question-and-answer pairs based on the 'Text'.
 
-JSON Structure for "quiz" Mode:
-
-JSON
-
+**JSON Structure for "quiz" Mode:**
 {
   "type": "quiz",
   "content": [
@@ -33,8 +38,13 @@ JSON
     {"question": "...", "answer": "..."}
   ]
 }
-INPUT
-Mode: ${mode} Text: ${text}
+
+---
+
+### INPUT
+
+Mode: ${mode}
+Text: ${text}
 `;
 
 
