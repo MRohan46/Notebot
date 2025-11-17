@@ -12,7 +12,7 @@ const Session = () => {
   const [revealedAnswers, setRevealedAnswers] = useState({});
   const [summaryData, setSummaryData] = useState(null);
   const [quizData, setQuizData] = useState(null);
-  const [serverStatus, setServerStatus] = useState(null)
+  const [serverStatus, setServerStatus] = useState(0)
   const { id: sessionId } = useParams();
   const navigate = useNavigate();
 
@@ -92,16 +92,18 @@ const Session = () => {
     });
   };
 
-
+  useEffect(()=>{
     // If server returned error
-    if (serverStatus !== 200) {
+    if (serverStatus > 0 && serverStatus !== 200) {
     return <SessionLoader loading={false} error={true} />;
     }
-
+  
     // If data is still loading
     if (!summaryData || !quizData) {
     return <SessionLoader loading={true} error={false} />;
     }
+  }, [serverStatus, summaryData, quizData])
+
 
     // If we have data, render the session normally
 

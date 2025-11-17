@@ -32,13 +32,11 @@ const AppHome = () => {
   const [savedSessions, setSavedSessions] = useState([]);
   const { userData, loading, error } = useGetUserData();
 
-  /*
   useEffect(() => {
     if (!loading && !userData) {
       navigate("/auth");
     }
   }, [loading, userData, navigate]);
-  */
 
   useEffect(() => {
     const fetchSessions = async () => {
@@ -51,7 +49,7 @@ const AppHome = () => {
     };
 
     fetchSessions();
-  }, []); // empty dependency array = run once on mount
+  }, [activeTab]); // empty dependency array = run once on mount
 
   const handleDelete = async (sessionId) => {
     setIsProcessing(true); 
