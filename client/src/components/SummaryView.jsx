@@ -10,7 +10,7 @@ export const SummaryView = ({summaryData}) => (
         </h2>
         
         <div className="grid md:grid-cols-2 gap-4">
-          {summaryData?.content?.links.map((item, i) => (
+          {summaryData?.content?.links?.map((item, i) => (
             <div 
               key={i}
               className="rounded-lg p-4 transition-all duration-300 hover:scale-105 cursor-pointer"
@@ -39,7 +39,7 @@ export const SummaryView = ({summaryData}) => (
         </h2>
         
         <div className="space-y-4">
-          {summaryData.content.mainSummary.map((point, i) => (
+          {summaryData?.content?.mainSummary?.map((point, i) => (
             <div key={i} className="flex gap-4 leading-relaxed">
               <div 
                 className="mt-2 w-2 h-2 rounded-full flex-shrink-0"
@@ -60,7 +60,7 @@ export const SummaryView = ({summaryData}) => (
         </h2>
         
         <div className="grid md:grid-cols-2 gap-4">
-          {summaryData.content.keyTerms.map((item, i) => (
+          {summaryData?.content?.keyTerms?.map((item, i) => (
             <div 
               key={i}
               className="rounded-lg p-4 transition-all duration-300 hover:scale-105 cursor-pointer"
