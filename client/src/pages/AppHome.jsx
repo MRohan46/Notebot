@@ -32,12 +32,13 @@ const AppHome = () => {
   const [savedSessions, setSavedSessions] = useState([]);
   const { userData, loading, error } = useGetUserData();
 
+  /*
   useEffect(() => {
     if (!loading && !userData) {
       navigate("/auth");
     }
   }, [loading, userData, navigate]);
-
+  */
 
   useEffect(() => {
     const fetchSessions = async () => {
@@ -316,6 +317,21 @@ const AppHome = () => {
             <div className="flex-1 overflow-auto">
               {activeTab === 'summary' && output.summary ? (
                 <div>
+
+                  <h3 className="text-xl font-bold mb-6" style={{ color: '#F5F5F5' }}>
+                    Youtube Lessons
+                  </h3>
+                  
+                  <ul className="space-y-4">
+                    {output.summary.links.map((item, i) => (
+                      <li key={i} className="flex gap-3 leading-relaxed" style={{ color: '#F5F5F5' }}>
+                        <span style={{ color: '#00FFFF' }}>•</span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  
+
                   <h3 className="text-xl font-bold mb-6" style={{ color: '#F5F5F5' }}>
                     AI-Generated Summary
                   </h3>
