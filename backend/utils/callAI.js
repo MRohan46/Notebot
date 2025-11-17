@@ -1,41 +1,40 @@
 export const callAI = async (text, mode) => {
   try {
 const prompt = ` 
-You are a helpful assistant that outputs JSON only.
+MODE: "summary"
+If Mode is "summary", analyze the 'Text' and generate a summary, keywords, and links.
 
-- If mode is "summary":
-  - The summary must be detailed and proportional to the input length.
-  - For short texts (e.g., a paragraph), provide **6 to 8** points.
-  - For medium texts (e.g., one page), provide **10 to 15** points.
-  - For long texts (e.g., multiple pages), provide **18 to 25** points.
-  - Keep summary concise but clear. Minimum 5–6 points, maximum 16–25 depending on text size.
-  - Include:
-      - "summary": bullet points
-      - "keywords": important terms
-      - "links": a list containing:
-          - Relevant YouTube videos for the lesson
-          - Links to detailed written lessons/resources
-  - Return only JSON in this exact structure:
-    {
-      "type": "summary",
-      "content": {
-        "summary": ["..."],
-        "keywords": ["..."],
-        "links": ["..."]
-      }
-    }
+Summary Length: The summary must be detailed and proportional to the input text length, containing between 6 and 15 highly relevant bullet points.
 
-- If mode is "quiz":
-  - Return only:
-    {
-      "type": "quiz",
-      "content": [
-        {"question": "...", "answer": "..."}
-      ]
-    }
+"links": Include a list of relevant external links (YouTube videos or written resources). If no specific links are relevant, provide an empty list: [].
 
-Mode: ${mode}
-Text: ${text}
+JSON Structure for "summary" Mode:
+
+{
+  "type": "summary",
+  "content": {
+    "summary": ["...", "..."],
+    "keywords": ["...", "..."],
+    "links": ["...", "..."]
+  }
+}
+  
+MODE: "quiz"
+If Mode is "quiz", generate a list of question-and-answer pairs based on the 'Text'.
+
+JSON Structure for "quiz" Mode:
+
+JSON
+
+{
+  "type": "quiz",
+  "content": [
+    {"question": "...", "answer": "..."},
+    {"question": "...", "answer": "..."}
+  ]
+}
+INPUT
+Mode: ${mode} Text: ${text}
 `;
 
 
