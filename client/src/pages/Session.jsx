@@ -102,17 +102,7 @@ const Session = () => {
     if (!summaryData || !quizData) {
     return <SessionLoader loading={true} error={false} />;
     }
-  }, [serverStatus, setServerStatus, summaryData, setSummaryData, quizData, setQuizData])
-  
-  // If server returned error
-  if (serverStatus > 0 && serverStatus !== 200) {
-  return <SessionLoader loading={false} error={true} />;
-  }
-
-  // If data is still loading
-  if (!summaryData || !quizData) {
-  return <SessionLoader loading={true} error={false} />;
-  }
+  }, [serverStatus, summaryData, quizData])
 
 
     // If we have data, render the session normally
