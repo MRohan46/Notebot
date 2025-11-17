@@ -323,7 +323,9 @@ const AppHome = () => {
                     {output.summary.links.map((item, i) => (
                       <li key={i} className="flex gap-3 leading-relaxed" style={{ color: '#F5F5F5' }}>
                         <span style={{ color: '#00FFFF' }}>•</span>
-                        <span>{item}</span>
+                        <a href={item}>
+                          <span>{item}</span>
+                        </a>
                       </li>
                     ))}
                   </ul>
