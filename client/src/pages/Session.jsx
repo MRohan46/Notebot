@@ -102,7 +102,7 @@ const Session = () => {
     if (!summaryData || !quizData) {
     return <SessionLoader loading={true} error={false} />;
     }
-  }, [serverStatus, summaryData, quizData])
+  }, [serverStatus, setServerStatus, summaryData, setSummaryData, quizData, setQuizData])
   
   // If server returned error
   if (serverStatus > 0 && serverStatus !== 200) {
