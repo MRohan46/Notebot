@@ -319,7 +319,7 @@ const AppHome = () => {
                 <div>
 
                   <h3 className="text-xl font-bold mb-6" style={{ color: '#F5F5F5' }}>
-                    Youtube Lessons
+                    Lessons
                   </h3>
                   <ul className="space-y-4">
                     {output.summary.links.map((item, i) => (
