@@ -49,7 +49,7 @@ const AppHome = () => {
     };
 
     fetchSessions();
-  }, [activeTab]); // empty dependency array = run once on mount
+  }, [page]); // empty dependency array = run once on mount
 
   const handleDelete = async (sessionId) => {
     setIsProcessing(true); 
