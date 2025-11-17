@@ -42,6 +42,7 @@ const Session = () => {
           date: session.date?.split("T")[0] || "remove",
           content: {
             mainSummary: summary?.summary || ["remove"],
+            links: summary.links || ["remove"],
             keyTerms: (summary?.keywords || []).map((kw) => ({
               term: kw,
               definition: "remove",
