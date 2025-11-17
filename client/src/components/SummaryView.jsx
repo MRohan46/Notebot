@@ -8,7 +8,7 @@ export const SummaryView = ({summaryData}) => (
             style={{ background: 'linear-gradient(to bottom, #00FFFF, #A020F0)' }} />
           Lessons
         </h2>
-        {console.log(summaryData)}
+
         <div className="grid md:grid-cols-2 gap-4">
           {summaryData?.content?.links?.map((item, i) => (
             <div 
